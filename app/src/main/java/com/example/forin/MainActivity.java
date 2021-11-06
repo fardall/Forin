@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent moveToPesanan = new Intent(MainActivity.this, PesananActivity.class);
                 moveToPesanan.putParcelableArrayListExtra(PesananActivity.EXTRA_ITEM, foodList);
                 startActivity(moveToPesanan);
+
             });
         }
     }

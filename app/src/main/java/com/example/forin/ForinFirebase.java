@@ -10,5 +10,5 @@ public class ForinFirebase {
     public ForinFirebase () {
         FirebaseDatabase db =FirebaseDatabase.getInstance();
     }
-    
+
 }

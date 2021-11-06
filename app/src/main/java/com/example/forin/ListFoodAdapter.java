@@ -12,6 +12,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.forin.datamodel.OrderDataModel;
+
 import java.util.ArrayList;
 
 public class ListFoodAdapter extends RecyclerView.Adapter<ListFoodAdapter.ListViewHolder> {
@@ -54,7 +56,7 @@ public class ListFoodAdapter extends RecyclerView.Adapter<ListFoodAdapter.ListVi
         holder.btnPlus.setOnClickListener(v -> {
             try {
                 holder.increaseInteger();
-                if (holder.total == 11) {
+                if (holder.total == 21) {
                     Toast.makeText(holder.itemView.getContext(), "Hanya 20 item per pesanan", Toast.LENGTH_SHORT).show();
                     holder.total-=1;
                 }
