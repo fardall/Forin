@@ -1,5 +1,7 @@
 package com.example.forin.datamodel;
 
+import com.example.forin.Food;
+
 import java.util.ArrayList;
 
 public class OrderDataModel {
@@ -7,19 +9,22 @@ public class OrderDataModel {
     private String name;
     private String note;
     private String noMeja;
-    private ArrayList<String> food = new ArrayList<>();
-    private ArrayList<String> totalFood = new ArrayList<>();
-    private ArrayList<String> totalPrice = new ArrayList<>();
+    private ArrayList<Food> food = new ArrayList<>();
+    private ArrayList<String> foodName, totalFood, totalPrice = new ArrayList<>();
 
-    public OrderDataModel () {};
+    public OrderDataModel () {}
 
-    public OrderDataModel(String name, String note, String noMeja, ArrayList<String> food, ArrayList<String> totalFood, ArrayList<String> totalPrice) {
+    public OrderDataModel(String name, String note, String noMeja) {
         this.name = name;
         this.note = note;
         this.noMeja = noMeja;
-        this.food = food;
-        this.totalFood = totalFood;
-        this.totalPrice = totalPrice;
+//        Food foodTemp = new Food();
+//        for (int i = 0; i < food.size(); i++) {
+//            foodTemp = food.get(i);
+//            foodName.add(foodTemp.getTitleFood());
+//            totalFood.add(String.valueOf(foodTemp.getFoodCount()));
+//            totalPrice.add(foodTemp.getPriceFood());
+//        }
     }
 
     public String getName() {
@@ -46,14 +51,6 @@ public class OrderDataModel {
         this.noMeja = noMeja;
     }
 
-    public ArrayList<String> getFood() {
-        return food;
-    }
-
-    public void setFood(ArrayList<String> food) {
-        this.food = food;
-    }
-
     public ArrayList<String> getTotalFood() {
         return totalFood;
     }
@@ -68,5 +65,21 @@ public class OrderDataModel {
 
     public void setTotalPrice(ArrayList<String> totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public ArrayList<Food> getFood() {
+        return food;
+    }
+
+    public void setFood(ArrayList<Food> food) {
+        this.food = food;
+    }
+
+    public ArrayList<String> getFoodName() {
+        return foodName;
+    }
+
+    public void setFoodName(ArrayList<String> foodName) {
+        this.foodName = foodName;
     }
 }

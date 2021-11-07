@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -32,6 +33,7 @@ public class OrderFoodAdapter extends RecyclerView.Adapter<OrderFoodAdapter.List
         holder.tvFoodCount.setText(String.valueOf(food.getFoodCount()));
         holder.tvFoodTitle.setText(food.getTitleFood());
         holder.tvFoodPrice.setText(String.valueOf(food.getFoodCount() * Float.parseFloat(food.getPriceFood()))+"00");
+
     }
 
     @Override
@@ -41,6 +43,7 @@ public class OrderFoodAdapter extends RecyclerView.Adapter<OrderFoodAdapter.List
 
     public class ListViewHolder extends RecyclerView.ViewHolder {
         TextView tvFoodCount, tvFoodTitle, tvFoodPrice;
+        EditText edtNote, edtName, edtTableNum;
 
         public ListViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -48,6 +51,7 @@ public class OrderFoodAdapter extends RecyclerView.Adapter<OrderFoodAdapter.List
             tvFoodPrice = itemView.findViewById(R.id.tv_priceFood);
             tvFoodTitle = itemView.findViewById(R.id.tv_titleFood);
             tvFoodCount = itemView.findViewById(R.id.tv_countFood);
+
 
         }
     }

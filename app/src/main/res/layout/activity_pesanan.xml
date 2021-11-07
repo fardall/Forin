@@ -9,7 +9,7 @@
     <LinearLayout
         android:id="@+id/wrapper"
         android:layout_width="match_parent"
-        android:layout_height="500dp" >
+        android:layout_height="450dp" >
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_orders"
@@ -51,8 +51,7 @@
                     android:layout_weight="1"
                     android:autofillHints="Masukkan Nama"
                     android:imeOptions="actionDone"
-                    android:inputType="text"
-                    tools:text="Muhamad Fardal" />
+                    android:inputType="text" />
 
             </TableRow>
 
@@ -76,7 +75,7 @@
                     android:imeOptions="actionDone"
                     android:inputType="text"
                     android:maxLines="3"
-                    tools:text="Sate jangan kasih cabe lebih dari 5" />
+                    tools:ignore="LabelFor" />
 
             </TableRow>
 
@@ -88,18 +87,19 @@
                     android:id="@+id/tv_noMeja"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/nomor_meja" />
+                    android:text="@string/nomor_meja"
+                    android:layout_gravity="center_vertical"/>
 
                 <EditText
+                    android:id="@+id/edt_noMeja"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:gravity="right"
                     android:imeOptions="actionDone"
                     android:inputType="number"
-                    tools:text="5" />
+                    android:autofillHints="Isi Nomor Meja" />
 
             </TableRow>
+
         </TableLayout>
 
         <FrameLayout
@@ -111,7 +111,6 @@
                 android:id="@+id/btn_finalOrder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="end"
                 android:text="@string/pesan"
                 android:textSize="24sp"
                 android:textStyle="bold" />
