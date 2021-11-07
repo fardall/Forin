@@ -39,14 +39,14 @@ public class PesananActivity extends AppCompatActivity {
 
         try {
             foodList.addAll(getIntent().getParcelableArrayListExtra(EXTRA_ITEM));
-            Order orderTemp = new Order();
             Food foodTemp = new Food();
             for (int i = 0; i < foodList.size(); i++) {
+                Order orderTemp = new Order();
                 foodTemp = foodList.get(i);
                 if (foodTemp.getFoodCount() != 0) {
-//                    orderTemp.setFoodCount(String.valueOf(foodTemp.getFoodCount()));
+                    orderTemp.setFoodCount(String.valueOf(foodTemp.getFoodCount()));
                     orderTemp.setFoodName(foodTemp.getTitleFood());
-                    orderTemp.setFoodName(foodTemp.getPriceFood());
+                    orderTemp.setTotalPrice(String.valueOf(foodTemp.getFoodCount() * Double.parseDouble(foodTemp.getPriceFood())));
                     orderList.add(orderTemp);
                 }
             }
@@ -59,7 +59,7 @@ public class PesananActivity extends AppCompatActivity {
             String name = edtName.getText().toString();
             String note = edtNote.getText().toString();
             String tabelNum = edtTableNum.getText().toString();
-            DBOrderDataModel order = new DBOrderDataModel(name, note, tabelNum);
+            DBOrderDataModel order = new DBOrderDataModel(name, note, tabelNum, orderList);
             ForinFirebase DBForin = new ForinFirebase();
 
             DBForin.add(order).addOnSuccessListener(suc->{

@@ -35,8 +35,7 @@ public class OrderFoodAdapter extends RecyclerView.Adapter<OrderFoodAdapter.List
         Order order = orderArrayList.get(position);
         holder.tvFoodCount.setText(String.valueOf(order.getFoodCount()));
         holder.tvFoodTitle.setText(order.getFoodName());
-        holder.tvFoodPrice.setText(String.valueOf(Integer.parseInt(order.getFoodCount()) * Double.parseDouble(order.getTotalPrice()))+"00");
-
+        holder.tvFoodPrice.setText(order.getTotalPrice() + "00");
     }
 
     @Override

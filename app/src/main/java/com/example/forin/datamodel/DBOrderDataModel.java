@@ -7,7 +7,6 @@ public class DBOrderDataModel {
     private String name;
     private String note;
     private String noMeja;
-    private ArrayList<Food> food = new ArrayList<>();
     private ArrayList<String> foodName, totalFood, totalPrice = new ArrayList<>();
 
     public DBOrderDataModel() {}
@@ -16,13 +15,19 @@ public class DBOrderDataModel {
         this.name = name;
         this.note = note;
         this.noMeja = noMeja;
-//        Food foodTemp = new Food();
-//        for (int i = 0; i < food.size(); i++) {
-//            foodTemp = food.get(i);
-//            foodName.add(foodTemp.getTitleFood());
-//            totalFood.add(String.valueOf(foodTemp.getFoodCount()));
-//            totalPrice.add(foodTemp.getPriceFood());
-//        }
+    }
+
+    public DBOrderDataModel(String name, String note, String noMeja, ArrayList<Order> order) {
+        this.name = name;
+        this.note = note;
+        this.noMeja = noMeja;
+        for (int i = 0; i < order.size(); i++) {
+            Order orderTemp = new Order();
+            orderTemp = order.get(i);
+            foodName.add(orderTemp.getFoodName());
+            totalFood.add(orderTemp.getFoodCount());
+            totalPrice.add(orderTemp.getTotalPrice());
+        }
     }
 
     public String getName() {
@@ -63,14 +68,6 @@ public class DBOrderDataModel {
 
     public void setTotalPrice(ArrayList<String> totalPrice) {
         this.totalPrice = totalPrice;
-    }
-
-    public ArrayList<Food> getFood() {
-        return food;
-    }
-
-    public void setFood(ArrayList<Food> food) {
-        this.food = food;
     }
 
     public ArrayList<String> getFoodName() {
