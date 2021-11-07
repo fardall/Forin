@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
+import com.example.forin.datamodel.OrderDataModel;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent moveToPesanan = new Intent(MainActivity.this, PesananActivity.class);
                 moveToPesanan.putParcelableArrayListExtra(PesananActivity.EXTRA_ITEM, foodList);
                 startActivity(moveToPesanan);
-
             });
         }
     }

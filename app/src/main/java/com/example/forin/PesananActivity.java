@@ -41,8 +41,6 @@ public class PesananActivity extends AppCompatActivity {
             OrderDataModel order = new OrderDataModel(name, note, tabelNum);
             ForinFirebase DBForin = new ForinFirebase();
 
-            System.out.print(name + note + tabelNum);
-
             DBForin.add(order).addOnSuccessListener(suc->{
                 Toast.makeText(this, "Pesanan Anda Berhasil Ditambahkan", Toast.LENGTH_SHORT).show();
             }).addOnFailureListener(er->{

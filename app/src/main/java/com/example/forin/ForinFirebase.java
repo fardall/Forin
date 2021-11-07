@@ -10,7 +10,7 @@ public class ForinFirebase {
     private DatabaseReference DbRef;
 
     public ForinFirebase () {
-        FirebaseDatabase db = FirebaseDatabase.getInstance();
+        FirebaseDatabase db = FirebaseDatabase.getInstance("https://forin-170e6-default-rtdb.asia-southeast1.firebasedatabase.app");
         DbRef = db.getReference(OrderDataModel.class.getSimpleName());
     }
 
