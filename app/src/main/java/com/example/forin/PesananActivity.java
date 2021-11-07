@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.forin.adapter.OrderFoodAdapter;
 import com.example.forin.datamodel.DBOrderDataModel;
 import com.example.forin.datamodel.Food;
+import com.example.forin.datamodel.Order;
 import com.example.forin.firebasemethod.ForinFirebase;
 
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ public class PesananActivity extends AppCompatActivity {
     public static final String EXTRA_ITEM = "extra_item";
     private RecyclerView rvOrder;
     private ArrayList<Food> foodList = new ArrayList<>();
+    private ArrayList<Order> orderList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +36,23 @@ public class PesananActivity extends AppCompatActivity {
         rvOrder = findViewById(R.id.rv_orders);
         rvOrder.setHasFixedSize(true);
 
-        foodList.addAll(getIntent().getParcelableArrayListExtra(EXTRA_ITEM));
+
+        try {
+            foodList.addAll(getIntent().getParcelableArrayListExtra(EXTRA_ITEM));
+            Order orderTemp = new Order();
+            Food foodTemp = new Food();
+            for (int i = 0; i < foodList.size(); i++) {
+                foodTemp = foodList.get(i);
+                if (foodTemp.getFoodCount() != 0) {
+//                    orderTemp.setFoodCount(String.valueOf(foodTemp.getFoodCount()));
+                    orderTemp.setFoodName(foodTemp.getTitleFood());
+                    orderTemp.setFoodName(foodTemp.getPriceFood());
+                    orderList.add(orderTemp);
+                }
+            }
+        } catch (Exception e) {
+            Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+        }
         showOrderList();
 
         btnFinal.setOnClickListener(v -> {
@@ -54,7 +72,7 @@ public class PesananActivity extends AppCompatActivity {
 
     private void showOrderList() {
         rvOrder.setLayoutManager(new LinearLayoutManager(this));
-        OrderFoodAdapter orderFoodAdapter = new OrderFoodAdapter(foodList);
+        OrderFoodAdapter orderFoodAdapter = new OrderFoodAdapter(orderList);
         rvOrder.setAdapter(orderFoodAdapter);
     }
 }

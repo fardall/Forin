@@ -11,15 +11,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.forin.R;
-import com.example.forin.datamodel.Food;
+import com.example.forin.datamodel.Order;
 
 import java.util.ArrayList;
 
 public class OrderFoodAdapter extends RecyclerView.Adapter<OrderFoodAdapter.ListViewHolder> {
-    private ArrayList<Food> foodArrayList;
+    private ArrayList<Order> orderArrayList;
 
-    public OrderFoodAdapter(ArrayList<Food> list) {
-        this.foodArrayList = list;
+    public OrderFoodAdapter(ArrayList<Order> list) {
+        this.orderArrayList = list;
     }
 
     @NonNull
@@ -32,16 +32,16 @@ public class OrderFoodAdapter extends RecyclerView.Adapter<OrderFoodAdapter.List
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
-        Food food = foodArrayList.get(position);
-        holder.tvFoodCount.setText(String.valueOf(food.getFoodCount()));
-        holder.tvFoodTitle.setText(food.getTitleFood());
-        holder.tvFoodPrice.setText(String.valueOf(food.getFoodCount() * Float.parseFloat(food.getPriceFood()))+"00");
+        Order order = orderArrayList.get(position);
+        holder.tvFoodCount.setText(String.valueOf(order.getFoodCount()));
+        holder.tvFoodTitle.setText(order.getFoodName());
+        holder.tvFoodPrice.setText(String.valueOf(Integer.parseInt(order.getFoodCount()) * Double.parseDouble(order.getTotalPrice()))+"00");
 
     }
 
     @Override
     public int getItemCount() {
-        return foodArrayList.size();
+        return orderArrayList.size();
     }
 
     public class ListViewHolder extends RecyclerView.ViewHolder {

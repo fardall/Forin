@@ -75,12 +75,12 @@ public class ListFoodAdapter extends RecyclerView.Adapter<ListFoodAdapter.ListVi
     }
 
     public static class ListViewHolder extends RecyclerView.ViewHolder {
+        public static boolean isExceed;
         TextView tvTitleFood, tvDescFood, tvPriceFood;
         ImageView ivImgFood;
         EditText edtTotal;
         Button btnPlus, btnMinus;
         int total = 0;
-        static boolean isExceed;
 
         public ListViewHolder(@NonNull View itemView) {
             super(itemView);

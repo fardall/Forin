@@ -50,7 +50,7 @@ public class FoodData {
             R.drawable.bakso
     };
 
-    static ArrayList<Food> getListData(){
+    public static ArrayList<Food> getListData(){
         ArrayList<Food> list = new ArrayList<>();
         for (int position = 0; position < titleFood.length; position++) {
             Food food = new Food();
