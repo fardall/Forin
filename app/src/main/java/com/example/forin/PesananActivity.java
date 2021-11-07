@@ -9,7 +9,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.forin.datamodel.OrderDataModel;
+import com.example.forin.adapter.OrderFoodAdapter;
+import com.example.forin.datamodel.DBOrderDataModel;
+import com.example.forin.datamodel.Food;
+import com.example.forin.firebasemethod.ForinFirebase;
 
 import java.util.ArrayList;
 
@@ -38,7 +41,7 @@ public class PesananActivity extends AppCompatActivity {
             String name = edtName.getText().toString();
             String note = edtNote.getText().toString();
             String tabelNum = edtTableNum.getText().toString();
-            OrderDataModel order = new OrderDataModel(name, note, tabelNum);
+            DBOrderDataModel order = new DBOrderDataModel(name, note, tabelNum);
             ForinFirebase DBForin = new ForinFirebase();
 
             DBForin.add(order).addOnSuccessListener(suc->{

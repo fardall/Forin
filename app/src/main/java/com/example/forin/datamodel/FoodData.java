@@ -1,4 +1,6 @@
-package com.example.forin;
+package com.example.forin.datamodel;
+
+import com.example.forin.R;
 
 import java.util.ArrayList;
 

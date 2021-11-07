@@ -1,10 +1,8 @@
 package com.example.forin.datamodel;
 
-import com.example.forin.Food;
-
 import java.util.ArrayList;
 
-public class OrderDataModel {
+public class DBOrderDataModel {
 
     private String name;
     private String note;
@@ -12,9 +10,9 @@ public class OrderDataModel {
     private ArrayList<Food> food = new ArrayList<>();
     private ArrayList<String> foodName, totalFood, totalPrice = new ArrayList<>();
 
-    public OrderDataModel () {}
+    public DBOrderDataModel() {}
 
-    public OrderDataModel(String name, String note, String noMeja) {
+    public DBOrderDataModel(String name, String note, String noMeja) {
         this.name = name;
         this.note = note;
         this.noMeja = noMeja;

@@ -1,4 +1,4 @@
-package com.example.forin;
+package com.example.forin.datamodel;
 
 import android.os.Parcel;
 import android.os.Parcelable;

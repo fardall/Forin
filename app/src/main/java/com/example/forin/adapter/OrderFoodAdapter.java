@@ -1,4 +1,4 @@
-package com.example.forin;
+package com.example.forin.adapter;
 
 import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.forin.R;
+import com.example.forin.datamodel.Food;
 
 import java.util.ArrayList;
 
