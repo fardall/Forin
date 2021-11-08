@@ -50,12 +50,9 @@ public class OrderFoodAdapter extends RecyclerView.Adapter<OrderFoodAdapter.List
 
         public ListViewHolder(@NonNull View itemView) {
             super(itemView);
-
             tvFoodPrice = itemView.findViewById(R.id.tv_priceFood);
             tvFoodTitle = itemView.findViewById(R.id.tv_titleFood);
             tvFoodCount = itemView.findViewById(R.id.tv_countFood);
-
-
         }
     }
 
