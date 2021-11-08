@@ -16,12 +16,14 @@ import com.example.forin.datamodel.Order;
 import com.example.forin.firebasemethod.ForinFirebase;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class PesananActivity extends AppCompatActivity {
     public static final String EXTRA_ITEM = "extra_item";
     private RecyclerView rvOrder;
     private ArrayList<Food> foodList = new ArrayList<>();
     private ArrayList<Order> orderList = new ArrayList<>();
+    private ArrayList<Order> orderDB = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,10 +58,11 @@ public class PesananActivity extends AppCompatActivity {
         showOrderList();
 
         btnFinal.setOnClickListener(v -> {
+            Date date = new Date();
             String name = edtName.getText().toString();
             String note = edtNote.getText().toString();
             String tabelNum = edtTableNum.getText().toString();
-            DBOrderDataModel order = new DBOrderDataModel(name, note, tabelNum, orderList);
+            DBOrderDataModel order = new DBOrderDataModel(name, note, tabelNum, date, orderList);
             ForinFirebase DBForin = new ForinFirebase();
 
             DBForin.add(order).addOnSuccessListener(suc->{
@@ -74,5 +77,9 @@ public class PesananActivity extends AppCompatActivity {
         rvOrder.setLayoutManager(new LinearLayoutManager(this));
         OrderFoodAdapter orderFoodAdapter = new OrderFoodAdapter(orderList);
         rvOrder.setAdapter(orderFoodAdapter);
+    }
+
+    public void setOrderDB(ArrayList<Order> orderDB) {
+        this.orderDB = orderDB;
     }
 }

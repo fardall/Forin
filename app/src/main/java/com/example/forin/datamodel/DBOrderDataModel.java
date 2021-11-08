@@ -1,6 +1,7 @@
 package com.example.forin.datamodel;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class DBOrderDataModel {
 
@@ -8,26 +9,40 @@ public class DBOrderDataModel {
     private String note;
     private String noMeja;
     private ArrayList<String> foodName, totalFood, totalPrice = new ArrayList<>();
+    private Date date;
+    private ArrayList<Order> order;
 
     public DBOrderDataModel() {}
 
-    public DBOrderDataModel(String name, String note, String noMeja) {
+    public DBOrderDataModel(String name, String note, String noMeja, Date date) {
         this.name = name;
         this.note = note;
         this.noMeja = noMeja;
+        this.date = date;
     }
 
-    public DBOrderDataModel(String name, String note, String noMeja, ArrayList<Order> order) {
+    public DBOrderDataModel(String name, String note, String noMeja, Date date, ArrayList<Order> order) {
         this.name = name;
         this.note = note;
         this.noMeja = noMeja;
-        for (int i = 0; i < order.size(); i++) {
-            Order orderTemp = new Order();
-            orderTemp = order.get(i);
-            foodName.add(orderTemp.getFoodName());
-            totalFood.add(orderTemp.getFoodCount());
-            totalPrice.add(orderTemp.getTotalPrice());
-        }
+        this.date = date;
+        this.order = order;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public ArrayList<Order> getOrder() {
+        return order;
+    }
+
+    public void setOrder(ArrayList<Order> order) {
+        this.order = order;
     }
 
     public String getName() {
