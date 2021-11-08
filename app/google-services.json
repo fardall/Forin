@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "37906226872",
+    "firebase_url": "https://forin-170e6-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "forin-170e6",
+    "storage_bucket": "forin-170e6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:37906226872:android:ab21cd7fd39996a5419e4d",
+        "android_client_info": {
+          "package_name": "com.example.forin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "37906226872-8q2eh49689jhmj3emlvi2a75qls46qh4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQpG_h3v8LWLuhpj5fkQz5uk8JQfLvJYs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "37906226872-8q2eh49689jhmj3emlvi2a75qls46qh4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
