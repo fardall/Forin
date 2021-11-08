@@ -8,25 +8,28 @@ public class DBOrderDataModel {
     private String name;
     private String note;
     private String noMeja;
-    private ArrayList<String> foodName, totalFood, totalPrice = new ArrayList<>();
+    private ArrayList<String> foodName = new ArrayList<>();
+    private ArrayList<String> totalFood = new ArrayList<>();
+    private ArrayList<String> totalPrice = new ArrayList<>();
     private Date date;
-    private ArrayList<Order> order;
 
     public DBOrderDataModel() {}
-
-    public DBOrderDataModel(String name, String note, String noMeja, Date date) {
-        this.name = name;
-        this.note = note;
-        this.noMeja = noMeja;
-        this.date = date;
-    }
 
     public DBOrderDataModel(String name, String note, String noMeja, Date date, ArrayList<Order> order) {
         this.name = name;
         this.note = note;
         this.noMeja = noMeja;
         this.date = date;
-        this.order = order;
+        transferData(order);
+    }
+    public void transferData (ArrayList<Order> orderArrayListList) {
+        Order order = new Order();
+        for (int i = 0; i < orderArrayListList.size(); i++) {
+            order = orderArrayListList.get(i);
+            foodName.add(order.getFoodName());
+            totalFood.add(order.getFoodCount());
+            totalPrice.add(order.getTotalPrice());
+        }
     }
 
     public Date getDate() {
@@ -35,14 +38,6 @@ public class DBOrderDataModel {
 
     public void setDate(Date date) {
         this.date = date;
-    }
-
-    public ArrayList<Order> getOrder() {
-        return order;
-    }
-
-    public void setOrder(ArrayList<Order> order) {
-        this.order = order;
     }
 
     public String getName() {

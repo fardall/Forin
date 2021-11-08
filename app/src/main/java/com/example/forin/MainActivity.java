@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.forin.adapter.ListFoodAdapter;
 import com.example.forin.datamodel.Food;
@@ -32,9 +33,9 @@ public class MainActivity extends AppCompatActivity {
 
         if (!ListFoodAdapter.ListViewHolder.isExceed) {
             btnPesan.setOnClickListener(v -> {
-                Intent moveToPesanan = new Intent(MainActivity.this, PesananActivity.class);
-                moveToPesanan.putParcelableArrayListExtra(PesananActivity.EXTRA_ITEM, foodList);
-                startActivity(moveToPesanan);
+                    Intent moveToPesanan = new Intent(MainActivity.this, PesananActivity.class);
+                    moveToPesanan.putParcelableArrayListExtra(PesananActivity.EXTRA_ITEM, foodList);
+                    startActivity(moveToPesanan);
             });
         }
     }

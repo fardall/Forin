@@ -39,8 +39,47 @@ public class PesananActivity extends AppCompatActivity {
         rvOrder.setHasFixedSize(true);
 
 
+        foodList.addAll(getIntent().getParcelableArrayListExtra(EXTRA_ITEM));
+        transferFoodToOrder(foodList);
+        showOrderList();
+
+        btnFinal.setOnClickListener(v -> {
+            if (edtName.getText().toString().equalsIgnoreCase("")) {
+                edtName.setError("Field Harus Diisi");
+            } else if (edtTableNum.getText().toString().equalsIgnoreCase("")) {
+                edtTableNum.setError("Field Harus Diisi");
+            } else {
+                Date date = new Date();
+                String name = edtName.getText().toString();
+                String note = edtNote.getText().toString();
+                String tabelNum = edtTableNum.getText().toString();
+                DBOrderDataModel order = new DBOrderDataModel(name, note, tabelNum, date, orderList);
+                ForinFirebase DBForin = new ForinFirebase();
+
+                DBForin.add(order).addOnSuccessListener(suc->{
+                    Toast.makeText(this, "Pesanan Anda Berhasil Ditambahkan", Toast.LENGTH_SHORT).show();
+                }).addOnFailureListener(er->{
+                    Toast.makeText(this, "Terjadi Kesalahan Dalam Memasukkan Pesananan Anda", Toast.LENGTH_LONG).show();
+                });
+            }
+
+        });
+    }
+
+    private void showOrderList() {
+        rvOrder.setLayoutManager(new LinearLayoutManager(this));
+        OrderFoodAdapter orderFoodAdapter = new OrderFoodAdapter(orderList);
+        rvOrder.setAdapter(orderFoodAdapter);
+    }
+
+    public void setOrderDB(ArrayList<Order> orderDB) {
+        this.orderDB = orderDB;
+    }
+
+    /*buat mindahin list Food ke list Order, cukup bagain nama, jumlah
+    * makananya, sama total harga */
+    private void transferFoodToOrder (ArrayList<Food> foodList ) {
         try {
-            foodList.addAll(getIntent().getParcelableArrayListExtra(EXTRA_ITEM));
             Food foodTemp = new Food();
             for (int i = 0; i < foodList.size(); i++) {
                 Order orderTemp = new Order();
@@ -53,33 +92,7 @@ public class PesananActivity extends AppCompatActivity {
                 }
             }
         } catch (Exception e) {
-            Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
         }
-        showOrderList();
-
-        btnFinal.setOnClickListener(v -> {
-            Date date = new Date();
-            String name = edtName.getText().toString();
-            String note = edtNote.getText().toString();
-            String tabelNum = edtTableNum.getText().toString();
-            DBOrderDataModel order = new DBOrderDataModel(name, note, tabelNum, date, orderList);
-            ForinFirebase DBForin = new ForinFirebase();
-
-            DBForin.add(order).addOnSuccessListener(suc->{
-                Toast.makeText(this, "Pesanan Anda Berhasil Ditambahkan", Toast.LENGTH_SHORT).show();
-            }).addOnFailureListener(er->{
-                Toast.makeText(this, "Terjadi Kesalahan Dalam Memasukkan Pesananan Anda", Toast.LENGTH_LONG).show();
-            });
-        });
-    }
-
-    private void showOrderList() {
-        rvOrder.setLayoutManager(new LinearLayoutManager(this));
-        OrderFoodAdapter orderFoodAdapter = new OrderFoodAdapter(orderList);
-        rvOrder.setAdapter(orderFoodAdapter);
-    }
-
-    public void setOrderDB(ArrayList<Order> orderDB) {
-        this.orderDB = orderDB;
     }
 }

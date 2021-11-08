@@ -19,6 +19,7 @@ import java.util.ArrayList;
 
 public class ListFoodAdapter extends RecyclerView.Adapter<ListFoodAdapter.ListViewHolder> {
     private ArrayList<Food> listFood;
+    private int orderNumber;
 
     public ListFoodAdapter(ArrayList<Food> list) {
         this.listFood = list;
@@ -67,6 +68,7 @@ public class ListFoodAdapter extends RecyclerView.Adapter<ListFoodAdapter.ListVi
                 System.err.println("String bukan angka");
             }
         });
+
     }
 
     @Override
