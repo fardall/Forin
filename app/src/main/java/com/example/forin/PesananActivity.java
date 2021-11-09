@@ -55,8 +55,8 @@ public class PesananActivity extends AppCompatActivity {
                 Date date = new Date();
                 String name = edtName.getText().toString();
                 String note = edtNote.getText().toString();
-                String tabelNum = edtTableNum.getText().toString();
-                DBOrderDataModel order = new DBOrderDataModel(name, note, tabelNum, date, orderList);
+                String tableNum = edtTableNum.getText().toString();
+                DBOrderDataModel order = new DBOrderDataModel(name, note, tableNum, date, orderList);
                 ForinFirebase DBForin = new ForinFirebase();
 
                 DBForin.add(order).addOnSuccessListener(suc->{
@@ -79,7 +79,7 @@ public class PesananActivity extends AppCompatActivity {
         this.orderDB = orderDB;
     }
 
-    /*buat mindahin list Food ke list Order, cukup bagain nama, jumlah
+    /*buat mindahin list Food ke list Order, cukup bagian nama, jumlah
     * makananya, sama total harga */
     private void transferFoodToOrder (ArrayList<Food> foodList ) {
         try {

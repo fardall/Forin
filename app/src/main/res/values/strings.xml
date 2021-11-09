@@ -8,4 +8,9 @@
     <string name="catatan">Catatan</string>
     <string name="nomor_meja">Nomor Meja</string>
     <string name="pesan">Pesan</string>
+    <string name="admin">Admin</string>
+    <string name="tab_text_1">Diproses</string>
+    <string name="tab_text_2">Selesai</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
