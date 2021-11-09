@@ -29,12 +29,14 @@ public class CashierAdapter extends RecyclerView.Adapter<CashierAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
+        DBOrderDataModel dbOrder = listData.get(position);
+        holder.tvNoPesanan.setText("Pesanan no " + (position+1));
+        holder.tvNoMeja.setText(dbOrder.getNoMeja());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return listData.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

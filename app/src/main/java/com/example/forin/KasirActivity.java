@@ -20,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class KasirActivity extends AppCompatActivity {
-    private ArrayList<DBOrderDataModel> listDetailPesanan = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,21 +45,5 @@ public class KasirActivity extends AppCompatActivity {
         if(getSupportActionBar() != null) {
             getSupportActionBar().setElevation(0);
         }
-
-        FirebaseDatabase db = FirebaseDatabase.getInstance("https://forin-170e6-default-rtdb.asia-southeast1.firebasedatabase.app");
-        DatabaseReference dbRef = db.getReference(DBOrderDataModel.class.getSimpleName());
-        dbRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot snapshotData : snapshot.getChildren()) {
-                    listDetailPesanan.add(snapshotData.getValue(DBOrderDataModel.class));
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
     }
 }
