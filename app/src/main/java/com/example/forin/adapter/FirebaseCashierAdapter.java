@@ -10,14 +10,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.forin.R;
 import com.example.forin.datamodel.DBOrderDataModel;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 
-import java.util.ArrayList;
+public class FirebaseCashierAdapter extends FirebaseRecyclerAdapter<DBOrderDataModel, FirebaseCashierAdapter.ViewHolder> {
 
-public class CashierAdapter extends RecyclerView.Adapter<CashierAdapter.ViewHolder> {
-    private ArrayList<DBOrderDataModel> listData;
-
-    public CashierAdapter(ArrayList<DBOrderDataModel> listData) {
-        this.listData = listData;
+    public FirebaseCashierAdapter(@NonNull FirebaseRecyclerOptions<DBOrderDataModel> options) {
+        super(options);
     }
 
     @NonNull
@@ -28,22 +27,16 @@ public class CashierAdapter extends RecyclerView.Adapter<CashierAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        DBOrderDataModel dbOrder = listData.get(position);
-        holder.tvNoPesanan.setText("Pesanan no " + (position+1));
-        holder.tvNoMeja.setText(dbOrder.getNoMeja());
-    }
-
-    @Override
-    public int getItemCount() {
-        return listData.size();
+    protected void onBindViewHolder(@NonNull ViewHolder viewHolder, int i, @NonNull DBOrderDataModel order) {
+        viewHolder.tvNoPesanan.setText("Pesanan No 2");
+        viewHolder.tvNoMeja.setText(order.getNoMeja());
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvNoPesanan, tvNoMeja;
-
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+
             tvNoPesanan = itemView.findViewById(R.id.no_pesanan);
             tvNoMeja = itemView.findViewById(R.id.no_meja);
         }
