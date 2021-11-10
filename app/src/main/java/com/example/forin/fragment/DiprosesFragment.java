@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.forin.R;
 import com.example.forin.adapter.FirebaseCashierAdapter;
 import com.example.forin.datamodel.DBOrderDataModel;
-import com.example.forin.firebasemethod.ForinFirebase;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -61,25 +61,16 @@ public class DiprosesFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        showAdapter();
-
-    private void showAdapter() {
-        ForinFirebase DBRef = new ForinFirebase();
-        listDetailPesanan = DBRef.getDBOrder();
-        rvPesanan.setLayoutManager(new LinearLayoutManager(requireActivity().getApplicationContext()));
-        rvPesanan.setAdapter(adapter);
     }
 
     public void getDataFromDB () {
-        FirebaseDatabase db = FirebaseDatabase.getInstance();
-        DatabaseReference dbRef = db.getReference().child("DBOrderDataModel");
+        db = FirebaseDatabase.getInstance("https://forin-170e6-default-rtdb.asia-southeast1.firebasedatabase.app");
+        dbRef = db.getReference(DBOrderDataModel.class.getSimpleName());
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot snapshotData : snapshot.getChildren()) {
-                    DBOrderDataModel order = snapshotData.getValue(DBOrderDataModel.class);
-                    listDetailPesanan.add(order);
-
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    listDetailPesanan.add(ds.getValue(DBOrderDataModel.class));
                 }
                 //adapter.setItem(listDetailPesanan);
             }
