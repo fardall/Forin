@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.forin.R;
+import com.example.forin.adapter.FirebaseCashierAdapter;
 import com.example.forin.datamodel.DBOrderDataModel;
 import com.example.forin.firebasemethod.ForinFirebase;
 import com.google.firebase.database.DataSnapshot;
@@ -23,8 +24,11 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class DiprosesFragment extends Fragment {
-    ArrayList<DBOrderDataModel> listDetailPesanan = new ArrayList<>();
-    RecyclerView rvPesanan;
+    private RecyclerView rvPesanan;
+    private ArrayList<DBOrderDataModel> listDetailPesanan = new ArrayList<>();
+    private FirebaseDatabase db;
+    private DatabaseReference dbRef;
+
 
     public DiprosesFragment() {
         // Required empty public constructor
@@ -34,18 +38,30 @@ public class DiprosesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_diproses, container, false);
+        View view = inflater.inflate(R.layout.fragment_diproses, container, false);
+        getDataFromDB();
+
+        rvPesanan = view.findViewById(R.id.rv_pesanan);
+        rvPesanan.setHasFixedSize(true);
+
+        rvPesanan.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
+
+        FirebaseRecyclerOptions<DBOrderDataModel> options = new
+                FirebaseRecyclerOptions.Builder<DBOrderDataModel>()
+                .setQuery(dbRef, DBOrderDataModel.class)
+                .build();
+        FirebaseCashierAdapter adapter = new FirebaseCashierAdapter(options);
+        rvPesanan.setAdapter(adapter);
+        adapter.startListening();
+
+        return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        rvPesanan = view.findViewById(R.id.rv_pesanan);
-        rvPesanan.setHasFixedSize(true);
 
         showAdapter();
-
-    }
 
     private void showAdapter() {
         ForinFirebase DBRef = new ForinFirebase();
@@ -63,6 +79,7 @@ public class DiprosesFragment extends Fragment {
                 for (DataSnapshot snapshotData : snapshot.getChildren()) {
                     DBOrderDataModel order = snapshotData.getValue(DBOrderDataModel.class);
                     listDetailPesanan.add(order);
+
                 }
                 //adapter.setItem(listDetailPesanan);
             }
