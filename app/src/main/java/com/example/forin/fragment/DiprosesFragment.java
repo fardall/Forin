@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.forin.R;
-import com.example.forin.adapter.CashierAdapter;
 import com.example.forin.datamodel.DBOrderDataModel;
+import com.example.forin.firebasemethod.ForinFirebase;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -43,26 +43,28 @@ public class DiprosesFragment extends Fragment {
         rvPesanan = view.findViewById(R.id.rv_pesanan);
         rvPesanan.setHasFixedSize(true);
 
-        getDataFromDB();
         showAdapter();
 
     }
 
     private void showAdapter() {
-        rvPesanan.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
-        CashierAdapter adapter = new CashierAdapter(listDetailPesanan);
+        ForinFirebase DBRef = new ForinFirebase();
+        listDetailPesanan = DBRef.getDBOrder();
+        rvPesanan.setLayoutManager(new LinearLayoutManager(requireActivity().getApplicationContext()));
         rvPesanan.setAdapter(adapter);
     }
 
     public void getDataFromDB () {
-        FirebaseDatabase db = FirebaseDatabase.getInstance("https://forin-170e6-default-rtdb.asia-southeast1.firebasedatabase.app");
-        DatabaseReference dbRef = db.getReference(DBOrderDataModel.class.getSimpleName());
+        FirebaseDatabase db = FirebaseDatabase.getInstance();
+        DatabaseReference dbRef = db.getReference().child("DBOrderDataModel");
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot snapshotData : snapshot.getChildren()) {
-                    listDetailPesanan.add(snapshotData.getValue(DBOrderDataModel.class));
+                    DBOrderDataModel order = snapshotData.getValue(DBOrderDataModel.class);
+                    listDetailPesanan.add(order);
                 }
+                //adapter.setItem(listDetailPesanan);
             }
 
             @Override

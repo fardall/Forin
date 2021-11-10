@@ -15,6 +15,22 @@ public class DBOrderDataModel {
 
     public DBOrderDataModel() {}
 
+    public DBOrderDataModel(String name, String note, String noMeja, ArrayList<String> foodName, ArrayList<String> totalFood, ArrayList<String> totalPrice, Date date) {
+        this.name = name;
+        this.note = note;
+        this.noMeja = noMeja;
+        this.foodName = foodName;
+        this.totalFood = totalFood;
+        this.totalPrice = totalPrice;
+        this.date = date;
+    }
+
+    public DBOrderDataModel(String name, String note, String noMeja) {
+        this.name = name;
+        this.note = note;
+        this.noMeja = noMeja;
+    }
+
     public DBOrderDataModel(String name, String note, String noMeja, Date date, ArrayList<Order> order) {
         this.name = name;
         this.note = note;

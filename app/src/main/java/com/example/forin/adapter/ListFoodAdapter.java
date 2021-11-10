@@ -1,5 +1,7 @@
 package com.example.forin.adapter;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +26,6 @@ public class ListFoodAdapter extends RecyclerView.Adapter<ListFoodAdapter.ListVi
     public ListFoodAdapter(ArrayList<Food> list) {
         this.listFood = list;
     }
-
 
     @NonNull
     @Override
@@ -64,11 +65,10 @@ public class ListFoodAdapter extends RecyclerView.Adapter<ListFoodAdapter.ListVi
                 }
                 holder.display(holder.total);
                 food.setFoodCount(holder.total);
-            } catch (NumberFormatException e){
+            } catch (NumberFormatException e) {
                 System.err.println("String bukan angka");
             }
         });
-
     }
 
     @Override
@@ -76,11 +76,9 @@ public class ListFoodAdapter extends RecyclerView.Adapter<ListFoodAdapter.ListVi
         return listFood.size();
     }
 
-    public static class ListViewHolder extends RecyclerView.ViewHolder {
-        public static boolean isExceed;
-        TextView tvTitleFood, tvDescFood, tvPriceFood;
+    public class ListViewHolder extends RecyclerView.ViewHolder {
+        TextView tvTitleFood, tvDescFood, tvPriceFood, tvTotal;
         ImageView ivImgFood;
-        EditText edtTotal;
         Button btnPlus, btnMinus;
         int total = 0;
 
@@ -91,10 +89,9 @@ public class ListFoodAdapter extends RecyclerView.Adapter<ListFoodAdapter.ListVi
             tvDescFood = itemView.findViewById(R.id.tv_descFood);
             tvPriceFood = itemView.findViewById(R.id.tv_priceFood);
             ivImgFood = itemView.findViewById(R.id.iv_imgFood);
-            edtTotal = itemView.findViewById(R.id.edt_total);
+            tvTotal = itemView.findViewById(R.id.tv_total);
             btnMinus = itemView.findViewById(R.id.btn_min);
             btnPlus = itemView.findViewById(R.id.btn_plus);
-
         }
 
         public void increaseInteger() {
@@ -106,11 +103,11 @@ public class ListFoodAdapter extends RecyclerView.Adapter<ListFoodAdapter.ListVi
         }
 
         private void display(int number) {
-            edtTotal.setText(String.valueOf(number));
+            tvTotal.setText(String.valueOf(number));
         }
 
         public int setEdtTotal() {
-            return Integer.parseInt(edtTotal.getText().toString());
+            return Integer.parseInt(tvTotal.getText().toString());
         }
     }
 }
