@@ -71,7 +71,7 @@ public class PesananActivity extends AppCompatActivity {
 
     private void showOrderList() {
         rvOrder.setLayoutManager(new LinearLayoutManager(this));
-        OrderFoodAdapter orderFoodAdapter = new OrderFoodAdapter(orderList);
+        OrderFoodAdapter orderFoodAdapter = new OrderFoodAdapter(orderList, 0);
         rvOrder.setAdapter(orderFoodAdapter);
     }
 
@@ -97,5 +97,10 @@ public class PesananActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }

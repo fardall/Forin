@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Forin">
         <activity
+            android:name=".DetailPesananActivity"
+            android:exported="true" />
+        <activity
             android:name=".PesananActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustPan" />
@@ -26,7 +29,7 @@
         </activity>
         <activity
             android:name=".KasirActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

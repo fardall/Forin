@@ -1,9 +1,12 @@
 package com.example.forin.datamodel;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 import java.util.Date;
 
-public class DBOrderDataModel {
+public class DBOrderDataModel implements Parcelable {
 
     private String name;
     private String note;
@@ -22,6 +25,28 @@ public class DBOrderDataModel {
         this.date = date;
         transferData(order);
     }
+
+    protected DBOrderDataModel(Parcel in) {
+        name = in.readString();
+        note = in.readString();
+        noMeja = in.readString();
+        foodName = in.createStringArrayList();
+        totalFood = in.createStringArrayList();
+        totalPrice = in.createStringArrayList();
+    }
+
+    public static final Creator<DBOrderDataModel> CREATOR = new Creator<DBOrderDataModel>() {
+        @Override
+        public DBOrderDataModel createFromParcel(Parcel in) {
+            return new DBOrderDataModel(in);
+        }
+
+        @Override
+        public DBOrderDataModel[] newArray(int size) {
+            return new DBOrderDataModel[size];
+        }
+    };
+
     public void transferData (ArrayList<Order> orderArrayListList) {
         Order order = new Order();
         for (int i = 0; i < orderArrayListList.size(); i++) {
@@ -86,5 +111,20 @@ public class DBOrderDataModel {
 
     public void setFoodName(ArrayList<String> foodName) {
         this.foodName = foodName;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeString(note);
+        dest.writeString(noMeja);
+        dest.writeStringList(foodName);
+        dest.writeStringList(totalFood);
+        dest.writeStringList(totalPrice);
     }
 }

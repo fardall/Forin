@@ -14,6 +14,11 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 public class FirebaseCashierAdapter extends FirebaseRecyclerAdapter<DBOrderDataModel, FirebaseCashierAdapter.ViewHolder> {
+    private OnItemClickCallback onItemClickCallback;
+
+    public void setOnItemClickCallback(OnItemClickCallback onItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback;
+    }
 
     public FirebaseCashierAdapter(@NonNull FirebaseRecyclerOptions<DBOrderDataModel> options) {
         super(options);
@@ -30,6 +35,9 @@ public class FirebaseCashierAdapter extends FirebaseRecyclerAdapter<DBOrderDataM
     protected void onBindViewHolder(@NonNull ViewHolder viewHolder, int i, @NonNull DBOrderDataModel order) {
         viewHolder.tvNoPesanan.setText("Pesanan No 2");
         viewHolder.tvNoMeja.setText(order.getNoMeja());
+        viewHolder.itemView.setOnClickListener(v -> {
+            onItemClickCallback.onItemClicked(order);
+        });
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -41,4 +49,9 @@ public class FirebaseCashierAdapter extends FirebaseRecyclerAdapter<DBOrderDataM
             tvNoMeja = itemView.findViewById(R.id.no_meja);
         }
     }
+
+    public interface OnItemClickCallback {
+        void onItemClicked(DBOrderDataModel dataModel);
+    }
+
 }
