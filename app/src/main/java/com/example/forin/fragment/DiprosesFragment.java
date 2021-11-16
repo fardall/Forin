@@ -1,6 +1,5 @@
 package com.example.forin.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +11,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.forin.DetailPesananActivity;
 import com.example.forin.R;
 import com.example.forin.adapter.FirebaseCashierAdapter;
 import com.example.forin.datamodel.DBOrderDataModel;
@@ -30,7 +28,7 @@ public class DiprosesFragment extends Fragment {
     private ArrayList<DBOrderDataModel> listDetailPesanan = new ArrayList<>();
     private FirebaseDatabase db;
     private DatabaseReference dbRef;
-    private FirebaseCashierAdapter adapter;
+
 
     public DiprosesFragment() {
         // Required empty public constructor
@@ -52,27 +50,17 @@ public class DiprosesFragment extends Fragment {
                 FirebaseRecyclerOptions.Builder<DBOrderDataModel>()
                 .setQuery(dbRef, DBOrderDataModel.class)
                 .build();
-        adapter = new FirebaseCashierAdapter(options);
+        FirebaseCashierAdapter adapter = new FirebaseCashierAdapter(options);
         rvPesanan.setAdapter(adapter);
         adapter.startListening();
-        return view;
-    }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        adapter.stopListening();
+        return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        adapter.setOnItemClickCallback(dataModel -> {
-            Intent moveToDetail = new Intent(getActivity().getApplicationContext(), DetailPesananActivity.class);
-            moveToDetail.putExtra(DetailPesananActivity.EXTRA_ITEM, dataModel);
-            startActivity(moveToDetail);
-        });
     }
 
     public void getDataFromDB () {
@@ -84,6 +72,7 @@ public class DiprosesFragment extends Fragment {
                 for (DataSnapshot ds : snapshot.getChildren()) {
                     listDetailPesanan.add(ds.getValue(DBOrderDataModel.class));
                 }
+                //adapter.setItem(listDetailPesanan);
             }
 
             @Override
@@ -92,6 +81,4 @@ public class DiprosesFragment extends Fragment {
             }
         });
     }
-
-
 }

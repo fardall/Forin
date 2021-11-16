@@ -46,11 +46,14 @@ public class PesananActivity extends AppCompatActivity {
         btnFinal.setOnClickListener(v -> {
             if (edtName.getText().toString().equalsIgnoreCase("")) {
                 edtName.setError("Field Harus Diisi");
+
             } else if (edtTableNum.getText().toString().equalsIgnoreCase("")) {
                 edtTableNum.setError("Field Harus Diisi");
+
             } else if (orderList.isEmpty()) {
                 btnFinal.setError("Anda Belum Memesan Makanan");
                 Toast.makeText(this, "Anda Belum Memesan Makanan", Toast.LENGTH_SHORT).show();
+
             } else {
                 Date date = new Date();
                 String name = edtName.getText().toString();

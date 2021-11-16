@@ -83,18 +83,18 @@ saus\n tarta rapi dibalut oke" />
             android:text="@string/minus"
             android:textColor="@color/white"
             android:textSize="24sp"
-            app:layout_constraintEnd_toStartOf="@+id/edt_total"
+            app:layout_constraintEnd_toStartOf="@+id/tv_total"
             app:layout_constraintTop_toBottomOf="@+id/tv_descFood" />
 
-        <EditText
-            android:id="@+id/edt_total"
+        <TextView
+            android:id="@+id/tv_total"
             android:layout_width="30dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:gravity="center"
-            android:inputType="number"
-            android:imeOptions="actionDone"
             android:text="@string/zero"
+            android:textSize="16sp"
             app:layout_constraintEnd_toStartOf="@+id/btn_plus"
             app:layout_constraintTop_toBottomOf="@+id/tv_descFood" />
 
