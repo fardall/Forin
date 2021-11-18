@@ -60,6 +60,7 @@ public class PesananActivity extends AppCompatActivity {
                 String note = edtNote.getText().toString();
                 String tableNum = edtTableNum.getText().toString();
                 DBOrderDataModel order = new DBOrderDataModel(name, note, tableNum, date, orderList);
+                order.setOnProcess(true);
                 ForinFirebase DBForin = new ForinFirebase();
 
                 DBForin.add(order).addOnSuccessListener(suc->{

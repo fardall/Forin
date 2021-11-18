@@ -33,11 +33,16 @@ public class FirebaseCashierAdapter extends FirebaseRecyclerAdapter<DBOrderDataM
 
     @Override
     protected void onBindViewHolder(@NonNull ViewHolder viewHolder, int i, @NonNull DBOrderDataModel order) {
-        viewHolder.tvNoPesanan.setText("Pesanan No 2");
-        viewHolder.tvNoMeja.setText(order.getNoMeja());
-        viewHolder.itemView.setOnClickListener(v -> {
-            onItemClickCallback.onItemClicked(order);
-        });
+        if (order.isOnProcess()){
+            viewHolder.tvNoPesanan.setText("Pesanan No 2");
+            viewHolder.tvNoMeja.setText(order.getNoMeja());
+            order.setKey(String.valueOf(i));
+            viewHolder.itemView.setOnClickListener(v -> {
+                onItemClickCallback.onItemClicked(order);
+            });
+        } else {
+            viewHolder.itemView.setVisibility(View.GONE);
+        }
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
