@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Dev/AndroidStudioProject/Forin2/app/src/main/res/layout/activity_detail_pesanan.xml" value="0.2" />
         <entry key="..\:/Dev/AndroidStudioProject/Forin2/app/src/main/res/layout/activity_kasir.xml" value="0.2203125" />
+        <entry key="..\:/Dev/AndroidStudioProject/Forin2/app/src/main/res/layout/activity_selesai_pesanan.xml" value="0.19375" />
         <entry key="..\:/Dev/AndroidStudioProject/Forin2/app/src/main/res/layout/fragment_diproses.xml" value="0.1078125" />
         <entry key="..\:/Dev/AndroidStudioProject/Forin2/app/src/main/res/layout/fragment_selesai.xml" value="0.2203125" />
         <entry key="..\:/Dev/AndroidStudioProject/Forin2/app/src/main/res/layout/item_kasir.xml" value="0.35185185185185186" />
@@ -21,7 +22,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

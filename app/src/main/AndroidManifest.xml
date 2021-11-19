@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Forin">
         <activity
+            android:name=".SelesaiPesananActivity"
+            android:exported="true" />
+        <activity
             android:name=".DetailPesananActivity"
             android:exported="true" />
         <activity

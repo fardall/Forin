@@ -1,23 +1,14 @@
 package com.example.forin;
 
-import androidx.annotation.NonNull;
+import android.os.Bundle;
+
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
-import android.os.Bundle;
-
 import com.example.forin.adapter.SectionPagerAdapter;
-import com.example.forin.datamodel.DBOrderDataModel;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
 
 public class KasirActivity extends AppCompatActivity {
 
