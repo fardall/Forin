@@ -11,11 +11,13 @@ public class DBOrderDataModel implements Parcelable {
     private String name;
     private String note;
     private String noMeja;
+    private String noPesanan;
+    private String key;
     private ArrayList<String> foodName = new ArrayList<>();
     private ArrayList<String> totalFood = new ArrayList<>();
     private ArrayList<String> totalPrice = new ArrayList<>();
     private Date date;
-    private boolean onProcess = true;
+    private boolean onProcess;
 
     public DBOrderDataModel() {}
 
@@ -43,13 +45,17 @@ public class DBOrderDataModel implements Parcelable {
         transferData(order);
     }
 
+
     protected DBOrderDataModel(Parcel in) {
         name = in.readString();
         note = in.readString();
         noMeja = in.readString();
+        noPesanan = in.readString();
+        key = in.readString();
         foodName = in.createStringArrayList();
         totalFood = in.createStringArrayList();
         totalPrice = in.createStringArrayList();
+        onProcess = in.readByte() != 0;
     }
 
     public static final Creator<DBOrderDataModel> CREATOR = new Creator<DBOrderDataModel>() {
@@ -73,15 +79,7 @@ public class DBOrderDataModel implements Parcelable {
             totalPrice.add(order.getTotalPrice());
         }
     }
-
-    public boolean isOnProcess() {
-        return onProcess;
-    }
-
-    public void setOnProcess(boolean onProcess) {
-        this.onProcess = onProcess;
-    }
-
+    
     public Date getDate() {
         return date;
     }
@@ -138,6 +136,30 @@ public class DBOrderDataModel implements Parcelable {
         this.foodName = foodName;
     }
 
+    public String getNoPesanan() {
+        return noPesanan;
+    }
+
+    public void setNoPesanan(String noPesanan) {
+        this.noPesanan = noPesanan;
+    }
+
+    public boolean isOnProcess() {
+        return onProcess;
+    }
+
+    public void setOnProcess(boolean onProcess) {
+        this.onProcess = onProcess;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -148,8 +170,11 @@ public class DBOrderDataModel implements Parcelable {
         dest.writeString(name);
         dest.writeString(note);
         dest.writeString(noMeja);
+        dest.writeString(noPesanan);
+        dest.writeString(key);
         dest.writeStringList(foodName);
         dest.writeStringList(totalFood);
         dest.writeStringList(totalPrice);
+        dest.writeByte((byte) (onProcess ? 1 : 0));
     }
 }

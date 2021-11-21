@@ -1,13 +1,13 @@
 package com.example.forin;
 
-import android.os.Bundle;
-import android.widget.Button;
-import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.forin.adapter.OrderFoodAdapter;
 import com.example.forin.datamodel.DBOrderDataModel;
@@ -20,9 +20,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class DetailPesananActivity extends AppCompatActivity {
+public class SelesaiPesananActivity extends AppCompatActivity {
     public static final String EXTRA_ITEM = "extra_item";
-    private RecyclerView rvDetailPesanan;
+    private RecyclerView rvDetailSelesai;
     private ArrayList<DBOrderDataModel> dataList = new ArrayList<>();
     private ArrayList<Order> orderData = new ArrayList<>();
     public DatabaseReference dbRef;
@@ -32,33 +32,31 @@ public class DetailPesananActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail_pesanan);
-        Button btnFinishOrder = findViewById(R.id.btn_finish_order);
-
+        setContentView(R.layout.activity_selesai_pesanan);
+        Button btnCancelFinish = findViewById(R.id.btn_back_order);
+        TextView tvNote = findViewById(R.id.tvNote);
         getKey();
 
         DBOrderDataModel order = getIntent().getParcelableExtra(EXTRA_ITEM);
 
-        rvDetailPesanan = findViewById(R.id.rv_detail);
-        rvDetailPesanan.setHasFixedSize(true);
-
-        TextView tvNote = findViewById(R.id.tvNote);
+        rvDetailSelesai = findViewById(R.id.rv_akhir);
+        rvDetailSelesai.setHasFixedSize(true);
         tvNote.setText(order.getNote());
 
         dataList.add(order);
         modelToOrder();
         showList();
 
-        btnFinishOrder.setOnClickListener(v -> {
-            dbRef.child(keys.get(Integer.parseInt(order.getKey()))).child("onProcess").setValue(false);
+        btnCancelFinish.setOnClickListener(v -> {
+            dbRef.child(keys.get(Integer.parseInt(order.getKey()))).child("onProcess").setValue(true);
             finish();
         });
     }
 
     public void showList () {
-        rvDetailPesanan.setLayoutManager(new LinearLayoutManager(this));
+        rvDetailSelesai.setLayoutManager(new LinearLayoutManager(this));
         OrderFoodAdapter orderFoodAdapter = new OrderFoodAdapter(orderData);
-        rvDetailPesanan.setAdapter(orderFoodAdapter);
+        rvDetailSelesai.setAdapter(orderFoodAdapter);
     }
 
     public void modelToOrder () {
