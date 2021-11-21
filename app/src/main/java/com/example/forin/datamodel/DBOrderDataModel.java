@@ -15,6 +15,7 @@ public class DBOrderDataModel implements Parcelable {
     private ArrayList<String> totalFood = new ArrayList<>();
     private ArrayList<String> totalPrice = new ArrayList<>();
     private Date date;
+    private boolean onProcess = true;
 
     public DBOrderDataModel() {}
 
@@ -71,6 +72,14 @@ public class DBOrderDataModel implements Parcelable {
             totalFood.add(order.getFoodCount());
             totalPrice.add(order.getTotalPrice());
         }
+    }
+
+    public boolean isOnProcess() {
+        return onProcess;
+    }
+
+    public void setOnProcess(boolean onProcess) {
+        this.onProcess = onProcess;
     }
 
     public Date getDate() {

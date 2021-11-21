@@ -31,7 +31,7 @@ public class DiprosesFragment extends Fragment {
 
 
     public DiprosesFragment() {
-        // Required empty public constructor
+
     }
 
     @Override
