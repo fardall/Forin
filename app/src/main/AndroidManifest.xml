@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.forin">
+    package="com.example.forin" >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_forin"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_forin_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Forin">
+        android:theme="@style/Theme.Forin" >
+        <activity
+            android:name=".Keterangan"
+            android:exported="true" />
         <activity
             android:name=".SelesaiPesananActivity"
             android:exported="true" />
@@ -23,8 +26,11 @@
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".MainActivity"
-            android:label="MENU"
-            android:exported="true">
+            android:exported="true" />
+        <activity
+            android:name=".SplashScreen"
+            android:exported="true"
+            android:label="MENU" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -33,7 +39,8 @@
         </activity>
         <activity
             android:name=".KasirActivity"
-            android:exported="true">
+            android:exported="true"
+            android:label="KASIR" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
