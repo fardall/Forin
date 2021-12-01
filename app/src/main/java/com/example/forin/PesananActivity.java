@@ -69,8 +69,18 @@ public class PesananActivity extends AppCompatActivity {
                     Toast.makeText(this, "Terjadi Kesalahan Dalam Memasukkan Pesananan Anda", Toast.LENGTH_LONG).show();
                 });
             }
-
         });
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Pesanan");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
     }
 
     private void showOrderList() {

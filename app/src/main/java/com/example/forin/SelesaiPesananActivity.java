@@ -51,6 +51,17 @@ public class SelesaiPesananActivity extends AppCompatActivity {
             dbRef.child(keys.get(Integer.parseInt(order.getKey()))).child("onProcess").setValue(true);
             finish();
         });
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Pesanan Selesai");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
     }
 
     public void showList () {

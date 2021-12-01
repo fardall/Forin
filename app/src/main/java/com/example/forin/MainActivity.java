@@ -6,8 +6,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button btnPesan = findViewById(R.id.btn_pesan);
+        TextView tvTitle = findViewById(R.id.tvTitle);
 
         rvFoods = findViewById(R.id.rv_foods);
         rvFoods.setHasFixedSize(true);
@@ -39,6 +42,12 @@ public class MainActivity extends AppCompatActivity {
             moveToPesanan.putParcelableArrayListExtra(PesananActivity.EXTRA_ITEM, foodList);
             startActivity(moveToPesanan);
         });
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+            getSupportActionBar().setCustomView(R.layout.abs_layout);
+            tvTitle.setText("Menu");
+        }
     }
 
     private void showFoodList() {

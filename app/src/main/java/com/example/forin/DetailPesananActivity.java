@@ -53,6 +53,17 @@ public class DetailPesananActivity extends AppCompatActivity {
             dbRef.child(keys.get(Integer.parseInt(order.getKey()))).child("onProcess").setValue(false);
             finish();
         });
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Detail Pesanan");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
     }
 
     public void showList () {
