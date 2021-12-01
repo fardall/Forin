@@ -22,12 +22,12 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
+            android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.29000002"
             app:shapeAppearanceOverlay="@style/roundedImageView"
-            android:scaleType="centerCrop"
             tools:src="@tools:sample/avatars" />
 
         <TextView
@@ -36,12 +36,15 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
+            android:fontFamily="@font/nunito_sans_bold"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:shadowColor="@color/gray"
+            android:shadowDx="90"
+            android:shadowDy="90"
             app:layout_constraintStart_toEndOf="@+id/iv_imgFood"
             app:layout_constraintTop_toTopOf="parent"
-            android:textSize="18sp"
-            android:fontFamily="@font/nunito_sans_bold"
-            android:textStyle="bold"
-            android:textColor="@color/black"
             tools:text="Judul makanan" />
 
         <TextView
@@ -66,23 +69,19 @@ saus\n tarta rapi dibalut oke" />
             android:layout_marginStart="16dp"
             android:layout_marginTop="2dp"
             android:fontFamily="@font/nunito_sans"
+            android:textColor="#0000FF"
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@+id/iv_imgFood"
             app:layout_constraintTop_toBottomOf="@+id/tv_descFood"
-            tools:text="25.000"
-            android:textColor="#0000FF"/>
+            tools:text="25.000" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_min"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
-            android:background="@drawable/border"
-            android:backgroundTint="@color/red"
-            android:text="@string/minus"
-            android:textColor="@color/white"
-            android:textSize="24sp"
+            android:background="@drawable/btn_min"
             app:layout_constraintEnd_toStartOf="@+id/tv_total"
             app:layout_constraintTop_toBottomOf="@+id/tv_descFood" />
 
@@ -100,15 +99,11 @@ saus\n tarta rapi dibalut oke" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_plus"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
-            android:background="@drawable/border"
-            android:backgroundTint="@color/green"
-            android:text="@string/plus"
-            android:textColor="@color/white"
-            android:textSize="24sp"
+            android:background="@drawable/btn_plus"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_descFood" />
 

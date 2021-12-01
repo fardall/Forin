@@ -27,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.title_layout);
         setContentView(R.layout.activity_main);
         Button btnPesan = findViewById(R.id.btn_pesan);
         TextView tvTitle = findViewById(R.id.tvTitle);
