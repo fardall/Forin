@@ -1,5 +1,6 @@
 package com.example.forin;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -29,6 +30,7 @@ public class DetailPesananActivity extends AppCompatActivity {
     private FirebaseDatabase db;
     private ArrayList<String> keys = new ArrayList<>();
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +45,7 @@ public class DetailPesananActivity extends AppCompatActivity {
         rvDetailPesanan.setHasFixedSize(true);
 
         TextView tvNote = findViewById(R.id.tvNote);
-        tvNote.setText(order.getNote());
+        tvNote.setText("Catatan : " + order.getNote());
 
         dataList.add(order);
         modelToOrder();

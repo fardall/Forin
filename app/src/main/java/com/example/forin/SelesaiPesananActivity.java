@@ -41,7 +41,7 @@ public class SelesaiPesananActivity extends AppCompatActivity {
 
         rvDetailSelesai = findViewById(R.id.rv_akhir);
         rvDetailSelesai.setHasFixedSize(true);
-        tvNote.setText(order.getNote());
+        tvNote.setText("Catatan : " + order.getNote());
 
         dataList.add(order);
         modelToOrder();

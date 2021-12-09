@@ -19,9 +19,14 @@
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="94dp"
+        android:minHeight="60dp"
+        app:cardBackgroundColor="#FFDDDD"
         app:cardCornerRadius="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/total_harga"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rv_detail">
 
@@ -29,21 +34,48 @@
             android:id="@+id/tvNote"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:layout_marginStart="16dp"
+            android:text="@string/catatan"
+            android:textSize="14sp"
             tools:text="Catatan : sate tidak enak" />
 
     </androidx.cardview.widget.CardView>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/total"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_finish_order"
+        app:layout_constraintStart_toStartOf="@+id/btn_finish_order"
+        tools:text="Total : " />
+
+    <TextView
+        android:id="@+id/total_harga"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_finish_order"
+        app:layout_constraintEnd_toEndOf="@+id/btn_finish_order"
+        tools:text="80.000" />
+
     <Button
         android:id="@+id/btn_finish_order"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/selesaikan_pesanan"
+        android:layout_height="70dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
+        android:background="@drawable/btn_pesan"
+        android:fontFamily="@font/nunito_sans_bold"
+        android:lineHeight="33dp"
+        android:text="@string/selesaikan_pesanan"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

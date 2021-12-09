@@ -1,5 +1,6 @@
 package com.example.forin.adapter;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,12 +50,13 @@ public class FirebaseCashierAdapter extends FirebaseRecyclerAdapter<DBOrderDataM
         return new ViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onBindViewHolder(@NonNull ViewHolder viewHolder, int i, @NonNull DBOrderDataModel order) {
         if (viewHolder.getItemViewType() == LAYOUT_ONE) {
             if (order.isOnProcess()){
-                viewHolder.tvNoPesanan.setText("Pesanan No 2");
-                viewHolder.tvNoMeja.setText(order.getNoMeja());
+                viewHolder.tvNoPesanan.setText("Pesanan No. " + (i+1));
+                viewHolder.tvNoMeja.setText("Meja " + order.getNoMeja());
                 order.setKey(String.valueOf(i));
                 viewHolder.itemView.setOnClickListener(v -> {
                     onItemClickCallback.onItemClicked(order);
@@ -64,8 +66,8 @@ public class FirebaseCashierAdapter extends FirebaseRecyclerAdapter<DBOrderDataM
             }
         } else {
             if (!(order.isOnProcess())){
-                viewHolder.tvNoPesanan.setText("Pesanan No 2");
-                viewHolder.tvNoMeja.setText(order.getNoMeja());
+                viewHolder.tvNoPesanan.setText("Pesanan No. " + (i+1));
+                viewHolder.tvNoMeja.setText("Meja " + order.getNoMeja());
                 order.setKey(String.valueOf(i));
                 viewHolder.itemView.setOnClickListener(v -> {
                     onItemClickCallback.onItemClicked(order);

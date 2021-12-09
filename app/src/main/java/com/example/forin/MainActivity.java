@@ -44,12 +44,6 @@ public class MainActivity extends AppCompatActivity {
             moveToPesanan.putParcelableArrayListExtra(PesananActivity.EXTRA_ITEM, foodList);
             startActivity(moveToPesanan);
         });
-
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-            getSupportActionBar().setCustomView(R.layout.abs_layout);
-            tvTitle.setText("Menu");
-        }
     }
 
     private void showFoodList() {
