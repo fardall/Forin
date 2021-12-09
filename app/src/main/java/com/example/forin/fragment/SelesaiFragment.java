@@ -69,7 +69,7 @@ public class SelesaiFragment extends Fragment {
                 FirebaseRecyclerOptions.Builder<DBOrderDataModel>()
                 .setQuery(dbRef, DBOrderDataModel.class)
                 .build();
-        adapter = new FirebaseCashierAdapter(options, 0);
+        adapter = new FirebaseCashierAdapter(options, 1);
 
         rvSelesai.setAdapter(adapter);
         adapter.startListening();

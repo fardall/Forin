@@ -1,5 +1,6 @@
 package com.example.forin;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -65,6 +66,7 @@ public class PesananActivity extends AppCompatActivity {
 
                 DBForin.add(order).addOnSuccessListener(suc->{
                     Toast.makeText(this, "Pesanan Anda Berhasil Ditambahkan", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(PesananActivity.this, Keterangan.class));
                 }).addOnFailureListener(er->{
                     Toast.makeText(this, "Terjadi Kesalahan Dalam Memasukkan Pesananan Anda", Toast.LENGTH_LONG).show();
                 });
