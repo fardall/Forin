@@ -79,7 +79,7 @@ public class DBOrderDataModel implements Parcelable {
             totalPrice.add(order.getTotalPrice());
         }
     }
-    
+
     public Date getDate() {
         return date;
     }
