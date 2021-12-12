@@ -17,4 +17,6 @@
     <string name="selesaikan_pesanan">Selesaikan Pesanan</string>
     <string name="batalkan_selesai">Batalkan selesai</string>
     <string name="total">Total :</string>
+    <string name="pesanan">Pesanan</string>
+    <string name="total_harga">Total : \n Rp.</string>
 </resources>

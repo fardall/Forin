@@ -18,23 +18,17 @@ public class DBOrderDataModel implements Parcelable {
     private ArrayList<String> totalPrice = new ArrayList<>();
     private Date date;
     private boolean onProcess;
+    private String total;
 
     public DBOrderDataModel() {}
 
-    public DBOrderDataModel(String name, String note, String noMeja, ArrayList<String> foodName, ArrayList<String> totalFood, ArrayList<String> totalPrice, Date date) {
+    public DBOrderDataModel(String name, String note, String noMeja, Date date, ArrayList<Order> order, String total) {
         this.name = name;
         this.note = note;
         this.noMeja = noMeja;
-        this.foodName = foodName;
-        this.totalFood = totalFood;
-        this.totalPrice = totalPrice;
         this.date = date;
-    }
-
-    public DBOrderDataModel(String name, String note, String noMeja) {
-        this.name = name;
-        this.note = note;
-        this.noMeja = noMeja;
+        this.total = total;
+        transferData(order);
     }
 
     public DBOrderDataModel(String name, String note, String noMeja, Date date, ArrayList<Order> order) {
@@ -78,6 +72,14 @@ public class DBOrderDataModel implements Parcelable {
             totalFood.add(order.getFoodCount());
             totalPrice.add(order.getTotalPrice());
         }
+    }
+
+    public String getTotal() {
+        return total;
+    }
+
+    public void setTotal(String total) {
+        this.total = total;
     }
 
     public Date getDate() {
