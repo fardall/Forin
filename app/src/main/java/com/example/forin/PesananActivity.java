@@ -21,6 +21,7 @@ import com.example.forin.firebasemethod.ForinFirebase;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 public class PesananActivity extends AppCompatActivity implements View.OnClickListener{
     public static final String EXTRA_ITEM = "extra_item";
@@ -62,7 +63,8 @@ public class PesananActivity extends AppCompatActivity implements View.OnClickLi
         transferFoodToOrder(foodList);
         showOrderList();
 
-        String tvTotalHarga = "     Total: \n" + "Rp. " + totalharga;
+        String tvTotalHarga = "     Total: \n" + "Rp. " + String.format(Locale.ENGLISH,"%,d",
+                Integer.parseInt(totalharga)).replace(',','.');
         tvTotal.setText(tvTotalHarga);
 
         btnFinal.setOnClickListener(v -> {
@@ -144,19 +146,19 @@ public class PesananActivity extends AppCompatActivity implements View.OnClickLi
     private void transferFoodToOrder (ArrayList<Food> foodList ) {
         try {
             Food foodTemp = new Food();
-            double totalHargaOrder = 0;
+            int totalHargaOrder = 0;
             for (int i = 0; i < foodList.size(); i++) {
                 Order orderTemp = new Order();
                 foodTemp = foodList.get(i);
                 if (foodTemp.getFoodCount() != 0) {
                     orderTemp.setFoodCount(String.valueOf(foodTemp.getFoodCount()));
                     orderTemp.setFoodName(foodTemp.getTitleFood());
-                    orderTemp.setTotalPrice(String.valueOf(foodTemp.getFoodCount() * Double.parseDouble(foodTemp.getPriceFood())));
-                    totalHargaOrder += foodTemp.getFoodCount() * Double.parseDouble(foodTemp.getPriceFood());
+                    orderTemp.setTotalPrice(String.valueOf(foodTemp.getFoodCount() * Integer.parseInt(foodTemp.getPriceFood())));
+                    totalHargaOrder += foodTemp.getFoodCount() * Integer.parseInt(foodTemp.getPriceFood());
                     orderList.add(orderTemp);
                 }
             }
-            totalharga = String.valueOf(totalHargaOrder)+"00";
+            totalharga = String.valueOf(totalHargaOrder);
         } catch (Exception e) {
             e.printStackTrace();
         }
