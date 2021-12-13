@@ -92,19 +92,19 @@
                     android:layout_gravity="center_vertical"
                     android:text="@string/nomor_meja" />
 
-                <androidx.appcompat.widget.AppCompatButton
+                <android.widget.Button
                     android:id="@+id/btn_noMeja1"
-                    android:layout_width="48dp"
+                    android:layout_width="40dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
-                    android:background="@drawable/background_btn_meja"
+                    style="@style/AppButtonOutlineSelectable"
                     android:fontFamily="@font/nunito_sans"
                     android:text="1"
                     android:textSize="24sp" />
 
-                <androidx.appcompat.widget.AppCompatButton
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_noMeja2"
-                    android:layout_width="48dp"
+                    android:layout_width="40dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:background="@drawable/background_btn_meja"
@@ -112,9 +112,9 @@
                     android:text="3"
                     android:textSize="24sp" />
 
-                <androidx.appcompat.widget.AppCompatButton
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_noMeja3"
-                    android:layout_width="48dp"
+                    android:layout_width="40dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:background="@drawable/background_btn_meja"
@@ -122,9 +122,9 @@
                     android:text="2"
                     android:textSize="24sp" />
 
-                <androidx.appcompat.widget.AppCompatButton
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_noMeja4"
-                    android:layout_width="48dp"
+                    android:layout_width="40dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:background="@drawable/background_btn_meja"

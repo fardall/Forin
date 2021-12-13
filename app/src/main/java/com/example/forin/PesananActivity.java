@@ -49,7 +49,9 @@ public class PesananActivity extends AppCompatActivity implements View.OnClickLi
         rvOrder = findViewById(R.id.rv_orders);
         rvOrder.setHasFixedSize(true);
         btnMeja1 = findViewById(R.id.btn_noMeja1);
-        btnMeja1.setOnClickListener(this);
+        btnMeja1.setOnClickListener(v -> {
+//            btnMeja1.isSelected = btnMeja1.isSelected.not();
+        });
         btnMeja2 = findViewById(R.id.btn_noMeja2);
         btnMeja2.setOnClickListener(this);
         btnMeja3 = findViewById(R.id.btn_noMeja3);
@@ -100,20 +102,22 @@ public class PesananActivity extends AppCompatActivity implements View.OnClickLi
     }
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btn_noMeja1:
-                noMeja = "1";
-                break;
-            case R.id.btn_noMeja2:
-                noMeja = "2";
-                break;
-            case R.id.btn_noMeja3:
-                noMeja = "3";
-                break;
-            case R.id.btn_noMeja4:
-                noMeja = "4";
-                break;
-        }
+//        btnMeja1.isSelected = btnMeja1.isSelected().not();
+//        switch (v.getId()) {
+//            case R.id.btn_noMeja1:
+//                noMeja = "1";
+//                btn.is
+//                break;
+//            case R.id.btn_noMeja2:
+//                noMeja = "2";
+//                break;
+//            case R.id.btn_noMeja3:
+//                noMeja = "3";
+//                break;
+//            case R.id.btn_noMeja4:
+//                noMeja = "4";
+//                break;
+//        }
 
     }
 

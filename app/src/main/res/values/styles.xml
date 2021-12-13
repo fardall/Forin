@@ -5,4 +5,15 @@
         <item name="cornerSize">8dp</item>
     </style>
 
+    <style name="AppButtonOutlineSelectable" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="shapeAppearance">@style/AppButtonShape</item>
+        <item name="strokeColor">@color/red_maroon</item>
+        <item name="android:selectable">true</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="android:solidColor">@color/btn_color_selector</item>
+    </style>
+
+    <style name="AppButtonShape" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerSize">8dp</item>
+    </style>
 </resources>
