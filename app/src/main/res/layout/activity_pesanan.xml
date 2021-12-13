@@ -26,8 +26,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="71dp"
+        android:layout_above="@id/fr_btn"
         android:padding="16dp">
 
         <TableLayout
@@ -135,36 +134,36 @@
             </TableRow>
 
         </TableLayout>
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tab_order">
-
-            <TextView
-                android:id="@+id/tv_total"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="5dp"
-                android:elevation="8dp"
-                android:fontFamily="@font/nunito_sans"
-                android:textColor="@color/white"
-                android:textSize="24sp"
-                tools:text="@string/total_harga" />
-
-            <Button
-                android:id="@+id/btn_finalOrder"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:background="@drawable/btn_pesan"
-                android:text="                         Pesan"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-
-
-
-        </FrameLayout>
-
     </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/fr_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:id="@+id/tv_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="5dp"
+            android:elevation="8dp"
+            android:fontFamily="@font/nunito_sans"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            tools:text="@string/total_harga" />
+
+        <Button
+            android:id="@+id/btn_finalOrder"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@drawable/btn_pesan"
+            android:text="@string/pesan"
+            android:gravity="center_vertical|end"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+    </FrameLayout>
 </RelativeLayout>

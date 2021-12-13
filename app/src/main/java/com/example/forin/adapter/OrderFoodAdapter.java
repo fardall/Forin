@@ -13,6 +13,7 @@ import com.example.forin.R;
 import com.example.forin.datamodel.Order;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class OrderFoodAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private ArrayList<Order> orderArrayList = new ArrayList<>();
@@ -68,12 +69,14 @@ public class OrderFoodAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             Order order = orderArrayList.get(position);
             viewHolder.tvFoodTitle.setText(order.getFoodName());
             viewHolder.tvFoodCount.setText(order.getFoodCount());
-            viewHolder.tvFoodPrice.setText(order.getTotalPrice());
+            viewHolder.tvFoodPrice.setText(String.format(Locale.ENGLISH,"%,d", Integer.parseInt(
+                    order.getTotalPrice())).replace(',','.'));
         } else {
             ViewHolderCashier viewHolder = (ViewHolderCashier) holder;
             Order order = dataModels.get(position);
             viewHolder.tvFoodTitle.setText(order.getFoodName());
-            viewHolder.tvFoodPrice.setText(order.getTotalPrice());
+            viewHolder.tvFoodPrice.setText(String.format(Locale.ENGLISH,"%,d", Integer.parseInt(
+                    order.getTotalPrice())).replace(',','.'));
             viewHolder.tvFoodCount.setText(order.getFoodCount());
 
         }

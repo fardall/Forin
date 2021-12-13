@@ -24,12 +24,12 @@ public class FoodData {
     };
 
     private static String[] priceFood = {
-            "24.000",
-            "24.000",
-            "17.000",
-            "15.000",
-            "24.000",
-            "24.000"
+            "24000",
+            "24000",
+            "17000",
+            "15000",
+            "24000",
+            "24000"
     };
 
     private static int[] foodCount = {

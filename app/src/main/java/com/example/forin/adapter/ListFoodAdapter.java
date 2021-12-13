@@ -18,10 +18,10 @@ import com.example.forin.R;
 import com.example.forin.datamodel.Food;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class ListFoodAdapter extends RecyclerView.Adapter<ListFoodAdapter.ListViewHolder> {
     private ArrayList<Food> listFood;
-    private int orderNumber;
 
     public ListFoodAdapter(ArrayList<Food> list) {
         this.listFood = list;
@@ -40,7 +40,8 @@ public class ListFoodAdapter extends RecyclerView.Adapter<ListFoodAdapter.ListVi
         holder.ivImgFood.setImageResource(food.getImgFood());
         holder.tvTitleFood.setText(food.getTitleFood());
         holder.tvDescFood.setText(food.getDescFood());
-        holder.tvPriceFood.setText(food.getPriceFood());
+        holder.tvPriceFood.setText(String.format(Locale.ENGLISH,"%,d", Integer.parseInt(
+                food.getPriceFood())).replace(',','.'));
 
         holder.btnMinus.setOnClickListener(v -> {
             try {
