@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,14 +25,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
-public class PesananActivity extends AppCompatActivity implements View.OnClickListener{
+public class PesananActivity extends AppCompatActivity {
     public static final String EXTRA_ITEM = "extra_item";
     private RecyclerView rvOrder;
     private ArrayList<Food> foodList = new ArrayList<>();
     private ArrayList<Order> orderList = new ArrayList<>();
     private ArrayList<Order> orderDB = new ArrayList<>();
     private String noMeja = "", totalharga;
-    private Button btnMeja1, btnMeja2, btnMeja3, btnMeja4;
+    private RadioGroup rdgMeja1, rdgMeja2;
+    private RadioButton rdButMeja1, rdButMeja2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,24 +45,17 @@ public class PesananActivity extends AppCompatActivity implements View.OnClickLi
 
         setContentView(R.layout.activity_pesanan);
         Button btnFinal = findViewById(R.id.btn_finalOrder);
-        EditText edtNote, edtName, edtTableNum;
+        EditText edtNote, edtName;
         TextView tvTotal;
 
         edtName = findViewById(R.id.edt_nama);
         edtNote = findViewById(R.id.edt_catatan);
         rvOrder = findViewById(R.id.rv_orders);
         rvOrder.setHasFixedSize(true);
-        btnMeja1 = findViewById(R.id.btn_noMeja1);
-        btnMeja1.setOnClickListener(v -> {
-//            btnMeja1.isSelected = btnMeja1.isSelected.not();
-        });
-        btnMeja2 = findViewById(R.id.btn_noMeja2);
-        btnMeja2.setOnClickListener(this);
-        btnMeja3 = findViewById(R.id.btn_noMeja3);
-        btnMeja3.setOnClickListener(this);
-        btnMeja4 = findViewById(R.id.btn_noMeja4);
-        btnMeja4.setOnClickListener(this);
         tvTotal = findViewById(R.id.tv_total);
+        rdgMeja1 = findViewById(R.id.rdg_btnMeja);
+        rdgMeja2 = findViewById(R.id.rdg_btnMeja2);
+
 
         foodList.addAll(getIntent().getParcelableArrayListExtra(EXTRA_ITEM));
         transferFoodToOrder(foodList);
@@ -69,30 +65,57 @@ public class PesananActivity extends AppCompatActivity implements View.OnClickLi
                 Integer.parseInt(totalharga)).replace(',','.');
         tvTotal.setText(tvTotalHarga);
 
+        rdgMeja1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId != -1) {
+                    rdgMeja2.clearCheck();
+                    rdgMeja1.check(checkedId);
+                    rdButMeja1 = findViewById(checkedId);
+                    noMeja = rdButMeja1.getText().toString();
+                }
+            }
+        });
+
+        rdgMeja2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId != -1) {
+                    rdgMeja1.clearCheck();
+                    rdgMeja2.check(checkedId);
+                    rdButMeja2 = findViewById(checkedId);
+                    noMeja = rdButMeja2.getText().toString();
+                }
+            }
+        });
+
         btnFinal.setOnClickListener(v -> {
+            btnFinal.setEnabled(false);
+
             if (edtName.getText().toString().equalsIgnoreCase("")) {
                 edtName.setError("Field Harus Diisi");
+                btnFinal.setEnabled(true);
 
             } else if (noMeja == "") {
                 Toast.makeText(this, "Pilih No Meja", Toast.LENGTH_SHORT).show();
+                btnFinal.setEnabled(true);
 
             } else if (orderList.isEmpty()) {
                 btnFinal.setError("Anda Belum Memesan Makanan");
                 Toast.makeText(this, "Anda Belum Memesan Makanan", Toast.LENGTH_SHORT).show();
-
+                btnFinal.setEnabled(true);
             } else {
                 Date date = new Date();
                 String name = edtName.getText().toString();
                 String note = edtNote.getText().toString();
-                String tableNum = noMeja;
-                DBOrderDataModel order = new DBOrderDataModel(name, note, tableNum, date, orderList, totalharga);
+                DBOrderDataModel order = new DBOrderDataModel(name, note, noMeja, date, orderList, totalharga);
                 order.setOnProcess(true);
                 ForinFirebase DBForin = new ForinFirebase();
 
-                DBForin.add(order).addOnSuccessListener(suc->{
+                DBForin.add(order).addOnSuccessListener(suc -> {
                     Toast.makeText(this, "Pesanan Anda Berhasil Ditambahkan", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(PesananActivity.this, Keterangan.class));
-                }).addOnFailureListener(er->{
+                }).addOnFailureListener(er -> {
                     Toast.makeText(this, "Terjadi Kesalahan Dalam Memasukkan Pesananan Anda", Toast.LENGTH_LONG).show();
                 });
             }
@@ -101,26 +124,6 @@ public class PesananActivity extends AppCompatActivity implements View.OnClickLi
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-    }
-    @Override
-    public void onClick(View v) {
-//        btnMeja1.isSelected = btnMeja1.isSelected().not();
-//        switch (v.getId()) {
-//            case R.id.btn_noMeja1:
-//                noMeja = "1";
-//                btn.is
-//                break;
-//            case R.id.btn_noMeja2:
-//                noMeja = "2";
-//                break;
-//            case R.id.btn_noMeja3:
-//                noMeja = "3";
-//                break;
-//            case R.id.btn_noMeja4:
-//                noMeja = "4";
-//                break;
-//        }
-
     }
 
     @Override
