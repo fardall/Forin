@@ -20,6 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class DetailPesananActivity extends AppCompatActivity {
     public static final String EXTRA_ITEM = "extra_item";
@@ -47,6 +48,10 @@ public class DetailPesananActivity extends AppCompatActivity {
         TextView tvNote = findViewById(R.id.tvNote);
         tvNote.setText("Catatan : " + order.getNote());
 
+        TextView tvTotalHarga = findViewById(R.id.total_harga);
+        tvTotalHarga.setText(String.format(Locale.ENGLISH,"%,d",
+                Integer.parseInt(order.getTotal())).replace(',','.'));
+
         dataList.add(order);
         modelToOrder();
         showList();
@@ -68,14 +73,14 @@ public class DetailPesananActivity extends AppCompatActivity {
         return true;
     }
 
-    public void showList () {
+    public void showList() {
         rvDetailPesanan.setLayoutManager(new LinearLayoutManager(this));
         OrderFoodAdapter orderFoodAdapter = new OrderFoodAdapter(orderData);
         rvDetailPesanan.setAdapter(orderFoodAdapter);
     }
 
-    public void modelToOrder () {
-        for (int i = 0; i < dataList.get(0).getTotalPrice().size() ; i++) {
+    public void modelToOrder() {
+        for (int i = 0; i < dataList.get(0).getTotalPrice().size(); i++) {
             Order order = new Order();
             order.setFoodName(dataList.get(0).getFoodName().get(i));
             order.setTotalPrice(dataList.get(0).getTotalPrice().get(i));

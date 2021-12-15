@@ -19,6 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class SelesaiPesananActivity extends AppCompatActivity {
     public static final String EXTRA_ITEM = "extra_item";
@@ -42,6 +43,10 @@ public class SelesaiPesananActivity extends AppCompatActivity {
         rvDetailSelesai = findViewById(R.id.rv_akhir);
         rvDetailSelesai.setHasFixedSize(true);
         tvNote.setText("Catatan : " + order.getNote());
+
+        TextView tvTotalHarga = findViewById(R.id.total_harga);
+        tvTotalHarga.setText(String.format(Locale.ENGLISH,"%,d",
+                Integer.parseInt(order.getTotal())).replace(',','.'));
 
         dataList.add(order);
         modelToOrder();

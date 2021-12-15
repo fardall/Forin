@@ -50,6 +50,7 @@ public class DBOrderDataModel implements Parcelable {
         totalFood = in.createStringArrayList();
         totalPrice = in.createStringArrayList();
         onProcess = in.readByte() != 0;
+        total = in.readString();
     }
 
     public static final Creator<DBOrderDataModel> CREATOR = new Creator<DBOrderDataModel>() {
@@ -162,6 +163,7 @@ public class DBOrderDataModel implements Parcelable {
         this.key = key;
     }
 
+
     @Override
     public int describeContents() {
         return 0;
@@ -178,5 +180,6 @@ public class DBOrderDataModel implements Parcelable {
         dest.writeStringList(totalFood);
         dest.writeStringList(totalPrice);
         dest.writeByte((byte) (onProcess ? 1 : 0));
+        dest.writeString(total);
     }
 }

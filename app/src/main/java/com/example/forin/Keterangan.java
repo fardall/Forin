@@ -22,7 +22,6 @@ public class Keterangan extends Activity {
                     e.printStackTrace();
                 }finally {
                     startActivity(new Intent(Keterangan.this, SplashScreen.class));
-                    finish();
                 }
             }
         };

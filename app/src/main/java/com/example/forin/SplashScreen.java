@@ -21,8 +21,9 @@ public class SplashScreen extends Activity {
                 }catch (InterruptedException e){
                     e.printStackTrace();
                 }finally {
-                    startActivity(new Intent(SplashScreen.this, MainActivity.class));
-                    finish();
+                    Intent toHome = new Intent(SplashScreen.this, MainActivity.class);
+                    toHome.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(toHome);
                 }
             }
         };

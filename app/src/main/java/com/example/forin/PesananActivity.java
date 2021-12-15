@@ -114,6 +114,7 @@ public class PesananActivity extends AppCompatActivity {
 
                 DBForin.add(order).addOnSuccessListener(suc -> {
                     Toast.makeText(this, "Pesanan Anda Berhasil Ditambahkan", Toast.LENGTH_SHORT).show();
+                    finish();
                     startActivity(new Intent(PesananActivity.this, Keterangan.class));
                 }).addOnFailureListener(er -> {
                     Toast.makeText(this, "Terjadi Kesalahan Dalam Memasukkan Pesananan Anda", Toast.LENGTH_LONG).show();

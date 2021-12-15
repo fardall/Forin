@@ -3,7 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Dev/AndroidStudioProject/Forin2/app/src/main/res/layout/activity_kasir.xml" value="0.2203125" />
+        <entry key="..\:/Dev/AndroidStudioProject/Forin2/app/src/main/res/drawable/btn_pesan.xml" value="0.20555555555555555" />
+        <entry key="..\:/Dev/AndroidStudioProject/Forin2/app/src/main/res/layout/activity_kasir.xml" value="0.33" />
         <entry key="..\:/Dev/AndroidStudioProject/Forin2/app/src/main/res/layout/fragment_diproses.xml" value="0.1078125" />
         <entry key="..\:/Dev/AndroidStudioProject/Forin2/app/src/main/res/layout/fragment_selesai.xml" value="0.2203125" />
         <entry key="..\:/Dev/AndroidStudioProject/Forin2/app/src/main/res/layout/item_kasir.xml" value="0.35185185185185186" />
