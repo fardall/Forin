@@ -48,8 +48,8 @@ public class PesananActivity extends AppCompatActivity {
         EditText edtNote, edtName;
         TextView tvTotal;
 
-        edtName = findViewById(R.id.edt_nama);
         edtNote = findViewById(R.id.edt_catatan);
+        edtName = findViewById(R.id.edt_nama);
         rvOrder = findViewById(R.id.rv_orders);
         rvOrder.setHasFixedSize(true);
         tvTotal = findViewById(R.id.tv_total);
@@ -92,7 +92,7 @@ public class PesananActivity extends AppCompatActivity {
         btnFinal.setOnClickListener(v -> {
             btnFinal.setEnabled(false);
 
-            if (edtName.getText().toString().equalsIgnoreCase("")) {
+            if (edtName.getText().toString().equals("")) {
                 edtName.setError("Field Harus Diisi");
                 btnFinal.setEnabled(true);
 
