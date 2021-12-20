@@ -52,23 +52,4 @@ public class MainActivity extends AppCompatActivity {
         ListFoodAdapter listFoodAdapter = new ListFoodAdapter(foodList);
         rvFoods.setAdapter(listFoodAdapter);
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        setMode(item.getItemId());
-        return super.onOptionsItemSelected(item);
-    }
-
-    public void setMode(int selectedMode) {
-        switch (selectedMode) {
-            case R.id.action_admin:
-                break;
-        }
-    }
 }

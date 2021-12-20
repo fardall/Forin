@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -35,6 +36,7 @@ public class SelesaiPesananActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selesai_pesanan);
         Button btnCancelFinish = findViewById(R.id.btn_back_order);
+        TextView tvName = findViewById(R.id.tvName);
         TextView tvNote = findViewById(R.id.tvNote);
         getKey();
 
@@ -42,7 +44,9 @@ public class SelesaiPesananActivity extends AppCompatActivity {
 
         rvDetailSelesai = findViewById(R.id.rv_akhir);
         rvDetailSelesai.setHasFixedSize(true);
+        tvName.setText("Nama : " + order.getName());
         tvNote.setText("Catatan : " + order.getNote());
+        tvNote.setMovementMethod(new ScrollingMovementMethod());
 
         TextView tvTotalHarga = findViewById(R.id.total_harga);
         tvTotalHarga.setText(String.format(Locale.ENGLISH,"%,d",

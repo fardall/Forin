@@ -9,11 +9,39 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_detail"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="330dp"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:minHeight="60dp"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/cardView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:scrollbars="vertical"
+            android:maxLines="1"
+            android:textSize="14sp"
+            tools:text="Nama" />
+
+    </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -21,23 +49,26 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="94dp"
+        android:layout_marginBottom="16dp"
         android:minHeight="60dp"
         app:cardBackgroundColor="#FFDDDD"
         app:cardCornerRadius="8dp"
+        android:scrollbars="vertical"
         app:layout_constraintBottom_toTopOf="@+id/total_harga"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rv_detail">
+        app:layout_constraintStart_toStartOf="parent">
 
         <TextView
             android:id="@+id/tvNote"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
+            android:maxLines="4"
+            android:scrollbars="vertical"
             android:text="@string/catatan"
             android:textSize="14sp"
             tools:text="Catatan : sate tidak enak" />
@@ -73,7 +104,6 @@
         android:layout_marginBottom="8dp"
         android:background="@drawable/btn_pesan"
         android:fontFamily="@font/nunito_sans_bold"
-        android:lineHeight="33dp"
         android:text="@string/selesaikan_pesanan"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"

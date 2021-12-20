@@ -2,6 +2,7 @@ package com.example.forin;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -45,8 +46,11 @@ public class DetailPesananActivity extends AppCompatActivity {
         rvDetailPesanan = findViewById(R.id.rv_detail);
         rvDetailPesanan.setHasFixedSize(true);
 
+        TextView tvName = findViewById(R.id.tvName);
         TextView tvNote = findViewById(R.id.tvNote);
+        tvName.setText("Nama : " + order.getName());
         tvNote.setText("Catatan : " + order.getNote());
+        tvNote.setMovementMethod(new ScrollingMovementMethod());
 
         TextView tvTotalHarga = findViewById(R.id.total_harga);
         tvTotalHarga.setText(String.format(Locale.ENGLISH,"%,d",

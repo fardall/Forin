@@ -16,4 +16,9 @@
     <style name="AppButtonShape" parent="ShapeAppearance.MaterialComponents.SmallComponent">
         <item name="cornerSize">8dp</item>
     </style>
+
+    <style name="ShapeAppearance.App.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
 </resources>
