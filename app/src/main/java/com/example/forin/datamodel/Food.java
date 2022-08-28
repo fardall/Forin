@@ -10,6 +10,11 @@ public class Food implements Parcelable {
     private String priceFood;
     private int foodCount;
 
+
+    public Food() {
+
+    }
+
     protected Food(Parcel in) {
         imgFood = in.readInt();
         titleFood = in.readString();
@@ -29,10 +34,6 @@ public class Food implements Parcelable {
             return new Food[size];
         }
     };
-
-    public Food() {
-
-    }
 
     public int getFoodCount() {
         return foodCount;

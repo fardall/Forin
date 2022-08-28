@@ -1,12 +1,9 @@
 package com.example.forin.adapter;
 
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,7 +28,9 @@ public class ListFoodAdapter extends RecyclerView.Adapter<ListFoodAdapter.ListVi
     @Override
     public ListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_row_food, parent, false);
-        return new ListViewHolder(view);
+        ListViewHolder holder = new ListViewHolder(view);
+
+        return holder;
     }
 
     @Override
@@ -42,6 +41,7 @@ public class ListFoodAdapter extends RecyclerView.Adapter<ListFoodAdapter.ListVi
         holder.tvDescFood.setText(food.getDescFood());
         holder.tvPriceFood.setText(String.format(Locale.ENGLISH,"%,d", Integer.parseInt(
                 food.getPriceFood())).replace(',','.'));
+        holder.display(food.getFoodCount());
 
         holder.btnMinus.setOnClickListener(v -> {
             try {
@@ -50,8 +50,8 @@ public class ListFoodAdapter extends RecyclerView.Adapter<ListFoodAdapter.ListVi
                     Toast.makeText(holder.itemView.getContext(), "Pesanan tidak boleh minus", Toast.LENGTH_SHORT).show();
                     holder.total = 0;
                 }
-                holder.display(holder.total);
                 food.setFoodCount(holder.total);
+                holder.display(food.getFoodCount());
             } catch (NumberFormatException e){
                 System.err.println("String bukan angka");
             }
@@ -62,10 +62,10 @@ public class ListFoodAdapter extends RecyclerView.Adapter<ListFoodAdapter.ListVi
                 holder.increaseInteger();
                 if (holder.total == 21) {
                     Toast.makeText(holder.itemView.getContext(), "Hanya 20 item per pesanan", Toast.LENGTH_SHORT).show();
-                    holder.total-=1;
+                    holder.total=20;
                 }
-                holder.display(holder.total);
                 food.setFoodCount(holder.total);
+                holder.display(food.getFoodCount());
             } catch (NumberFormatException e) {
                 System.err.println("String bukan angka");
             }

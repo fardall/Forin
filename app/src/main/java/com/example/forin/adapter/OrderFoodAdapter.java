@@ -1,6 +1,7 @@
 package com.example.forin.adapter;
 
 import android.annotation.SuppressLint;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,6 +65,7 @@ public class OrderFoodAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        Log.d("asd", "onBindViewHolder: " + holder.getItemViewType());
         if (holder.getItemViewType() == LAYOUT_ONE) {
             ListViewHolder viewHolder = (ListViewHolder) holder;
             Order order = orderArrayList.get(position);

@@ -17,7 +17,7 @@ public class FoodData {
             "Jus Sirsak",
             "Jus Belimbing",
             "Jus Alpukat",
-            "Es Teh Maniez"
+            "Es Teh Manis"
     };
 
     private static String[] descFood = {
